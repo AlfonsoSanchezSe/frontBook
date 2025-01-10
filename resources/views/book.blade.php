@@ -13,7 +13,7 @@
     @endif
 
     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <a class="btn btn-success btn-sm" href="{{ route('books') }}"><i class="fa fa-plus"></i> Crear Libro</a>
+        <a class="btn btn-success btn-sm" href="{{ route('createBook') }}"><i class="fa fa-plus"></i> Crear Libro</a>
     </div>
 
     @if(isset($libros))
@@ -22,7 +22,6 @@
                 <tr>
                     <th>ID</th>
                     <th>ISBN</th>
-                    <!-- <th>Usado</th> -->
                     <th>Genero</th>
                     <th>Estado</th>
                     <th>Precio</th>
@@ -31,11 +30,11 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($libros as $libro)
+            @foreach($libros as $libro)
+
                     <tr>
                         <td>{{ $libro['id'] }}</td>
                         <td>{{ $libro['isbn'] }}</td>
-                        <!-- <td>{{ $libro['gen'] ? 'Sí' : 'No' }}</td> -->
                         <td>{{ $libro['gen'] }}</td>
                         <td>{{ $libro['status'] }}</td>
                         <td>{{ $libro['price'] }}</td>
