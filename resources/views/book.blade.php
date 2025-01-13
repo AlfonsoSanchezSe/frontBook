@@ -40,8 +40,8 @@
                         <td>{{ $libro['price'] }}</td>
                         <td>{{ $libro['published'] }}</td>
                         <td>
-                            <a href="{{ route('books', ['id' => $libro['id']]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Editar</a>
-                            <a href="{{ route('books', ['id' => $libro['id']]) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar</a>
+                            <a href="{{ route('updateBook', ['id' => $libro['id']]) }}" class="btn btn-primary btn-sm"><i class="fa fa-edit"></i> Editar</a>
+                            <a href="{{ route('confirmDelete', ['id' => $libro['id']]) }}" class="btn btn-danger btn-sm"><i class="fa fa-trash"></i> Eliminar</a>
                         </td>
                     </tr>
                 @endforeach

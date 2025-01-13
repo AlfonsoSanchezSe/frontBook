@@ -20,6 +20,7 @@ class BookController extends Controller
         if ($response->successful()) {
             Log::info("initss");
             $libros = $response->json()['data'];
+            Log::info($libros);
             return view('book', compact('libros'));
         } /*else {
             return view('libros.index')->withErrors('Error al recuperar los libros');
@@ -57,4 +58,65 @@ class BookController extends Controller
             return view('libros.index')->withErrors('Error al recuperar los libros');
         }*/
     }
+
+
+
+    public function confirmDelete($id){
+
+        $token = session('jwt_token');
+        $response = Http::withToken($token)
+            ->get(env('APP_URL_BACKEND') . '/book/' . $id);
+
+            if ($response->successful()) {
+                $libro = $response->json()['data'];
+                Log::info($libro);
+
+        return view("confirmDelete", compact("libro"));
+    }}
+    public function deleteBook($id)
+    {
+        // Realiza la solicitud GET a tu API
+        $token = session('jwt_token');
+        $response = Http::withToken($token)
+            ->delete(env('APP_URL_BACKEND') . '/delete/' . $id);
+
+        Log::info($response);
+        // Verifica que la solicitud fue exitosa
+        if ($response->successful()) {
+            Log::info("initss");
+            return $this->books();
+        } /*else {
+            return view('libros.index')->withErrors('Error al recuperar los libros');
+        }*/
+    }
+
+
+    public function updatePage($id){
+
+        $token = session('jwt_token');
+        $response = Http::withToken($token)
+            ->get(env('APP_URL_BACKEND') . '/book/' . $id);
+
+            if ($response->successful()) {
+                $libro = $response->json()['data'];
+                Log::info($libro);
+
+        return view("updateBook", compact("libro"));
+
+    }
+}
+
+public function updateBook(Request $request, $id){
+    $token = session('jwt_token');
+        $response = Http::withToken($token)
+            ->post(env('APP_URL_BACKEND') . '/book/update/' . $id, [
+                "isbn" => $request->isbn,
+                "gen" => $request->gen,
+                "status" => $request->state,
+                "price" => $request->price,
+                "published" => $request->published,
+
+            ]);
+}
+
 }

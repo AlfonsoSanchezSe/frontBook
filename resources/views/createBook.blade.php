@@ -7,7 +7,7 @@
 
 @section('content')
 <div class="container">
-    <h1>Libros</h1>
+    <h1>Crear Libro</h1>
     @if($errors->any())
         <div class="alert alert-danger">
             {{ $errors->first() }}
@@ -22,11 +22,22 @@
                 </div>
                 <div class="form-group">
                     <label for="gen">Genero</label>
-                    <input type="text" class="form-control" id="gen" name="gen" required>
+                    <select name="gen" class="form-control" id="gen" required>
+                        <option value="" selected disabled>Selecciona una opcion...</option>
+                        <option value="DRAMA">Drama</option>
+                        <option value="SCIFI">Ciencia ficcion</option>
+                        <option value="MANGA">Manga</option>
+                        <option value="SPORTS">Deportes</option>
+                        <option value="COOKING">Cocina</option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label for="state">Estado</label>
-                    <input type="text" class="form-control" id="state" name="state" required>
+                    <select name="state" class="form-control" id="state" required>
+                        <option value="" selected disabled>Selecciona una opcion...</option>
+                        <option value="ONSALE">A la venta</option>
+                        <option value="PREORDER">Preventa</option>
+                        </select>
                 </div>
                 <div class="form-group">
                     <label for="price">Precio</label>
