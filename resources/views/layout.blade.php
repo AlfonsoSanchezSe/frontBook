@@ -10,7 +10,7 @@
 <div class="container">
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="{{ url('/') }}">{{ env('APP_NAME') }}</a>
+            <a class="navbar-brand" href="{{ url('/') }}">{{ env('APP_NAME_FRONT') }}</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -32,7 +32,7 @@
     </main>
 
     <footer class="text-center mt-4">
-        <p>&copy; {{ date('Y') }} {{ env('APP_NAME') }}. Todos los derechos reservados pa mi.</p>
+        <p>&copy; {{ date('Y') }} {{ env('APP_NAME_FRONT') }} Alfonso. Todos los derechos reservados pa mi.</p>
     </footer>
 </div>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

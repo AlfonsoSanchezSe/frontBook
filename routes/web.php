@@ -16,4 +16,4 @@ Route::post('/proccessCreate', [BookController::class, 'proccessCreateBook'])->n
 Route::get('/confirmDelete&id={id}', [BookController::class, 'confirmDelete'])->name('confirmDelete');
 Route::get('/deleteBook&id={id}', [BookController::class, 'deleteBook'])->name('deleteBook');
 Route::get('/updateBook&id={id}', [BookController::class, 'updatePage'])->name('updateBook');
-Route::post('/proccessUpdate', [BookController::class, 'updateBook'])->name('proccessUpdate');
+Route::post('/proccessUpdate&id={id}', [BookController::class, 'updateBook'])->name('proccessUpdate');

@@ -14,6 +14,10 @@
         </div>
     @endif
 
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <a class="btn btn-warning btn-sm" href="{{ route('books') }}"><i class="fa fa-plus"></i>Volver al inicio</a>
+    </div>
+
     <form method="POST" action="{{ route('proccessCreateBook') }}">
                 @csrf
                 <div class="form-group">

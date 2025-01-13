@@ -61,18 +61,20 @@ class BookController extends Controller
 
 
 
-    public function confirmDelete($id){
+    public function confirmDelete($id)
+    {
 
         $token = session('jwt_token');
         $response = Http::withToken($token)
             ->get(env('APP_URL_BACKEND') . '/book/' . $id);
 
-            if ($response->successful()) {
-                $libro = $response->json()['data'];
-                Log::info($libro);
+        if ($response->successful()) {
+            $libro = $response->json()['data'];
+            Log::info($libro);
 
-        return view("confirmDelete", compact("libro"));
-    }}
+            return view("confirmDelete", compact("libro"));
+        }
+    }
     public function deleteBook($id)
     {
         // Realiza la solicitud GET a tu API
@@ -91,25 +93,27 @@ class BookController extends Controller
     }
 
 
-    public function updatePage($id){
+    public function updatePage($id)
+    {
 
         $token = session('jwt_token');
         $response = Http::withToken($token)
             ->get(env('APP_URL_BACKEND') . '/book/' . $id);
 
-            if ($response->successful()) {
-                $libro = $response->json()['data'];
-                Log::info($libro);
+        if ($response->successful()) {
+            $libro = $response->json()['data'];
+            Log::info($libro);
 
-        return view("updateBook", compact("libro"));
-
+            return view("updateBook", compact("libro"));
+        }
     }
-}
 
-public function updateBook(Request $request, $id){
-    $token = session('jwt_token');
+    public function updateBook(Request $request, $id)
+    {
+        $token = session('jwt_token');
         $response = Http::withToken($token)
-            ->post(env('APP_URL_BACKEND') . '/book/update/' . $id, [
+            ->patch(env('APP_URL_BACKEND') . '/updateBook', [
+                "id" => $id,
                 "isbn" => $request->isbn,
                 "gen" => $request->gen,
                 "status" => $request->state,
@@ -117,6 +121,14 @@ public function updateBook(Request $request, $id){
                 "published" => $request->published,
 
             ]);
-}
 
+        if ($response->successful()) {
+            $libro = $response->json()['data'];
+            Log::info($libro);
+
+            return $this->books();
+        }
+
+        Log::info($request);
+    }
 }
