@@ -31,31 +31,16 @@
                 <div class="form-group">
                     <label for="gen">Genero</label>
                     <select name="gen" class="form-control" id="gen" required>
-                        @if($libro["gen"] == "DRAMA")
-                        <option selected value="DRAMA">Drama</option>
-                        @else
-                        <option value="DRAMA">Drama</option>
-                        @endif
-                        @if($libro["gen"] == "SCIFI")
-                        <option selected value="SCIFI">Ciencia ficcion</option>
-                        @else
-                        <option value="SCIFI">Ciencia ficcion</option>
-                        @endif
-                        @if($libro["gen"] == "MANGA")
-                        <option selected value="MANGA">Manga</option>
-                        @else
-                        <option value="MANGA">Manga</option>
-                        @endif
-                        @if($libro["gen"] == "SPORTS")
-                        <option selected value="SPORTS">Deportes</option>
-                        @else
-                        <option value="SPORTS">Deportes</option>
-                        @endif
-                        @if($libro["gen"] == "COOKING")
-                        <option selected value="COOKING">Cocina</option>
-                        @else
-                        <option value="COOKING">Cocina</option>
-                        @endif
+
+                        <option  {{ $libro['gen']== "DRAMA" ? 'selected' : '' }} value="DRAMA">Drama</option>
+
+                        <option {{ $libro['gen']== "SCIFI" ? 'selected' : '' }} value="SCIFI">Ciencia ficcion</option>
+
+                        <option {{ $libro['gen']== "MANGA" ? 'selected' : '' }} value="MANGA">Manga</option>
+
+                        <option {{ $libro['gen']== "SPORTS" ? 'selected' : '' }} value="SPORTS">Deportes</option>
+
+                        <option {{ $libro['gen']== "COOKING" ? 'selected' : '' }} value="COOKING">Cocina</option>
 
                     </select>
                 </div>
